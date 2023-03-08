@@ -37,6 +37,9 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     checkpoint_gc
 
+# Assertation
+TARGET_OTA_ASSERT_DEVICE := spes,spesn
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
