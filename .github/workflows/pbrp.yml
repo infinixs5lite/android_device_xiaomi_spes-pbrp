@@ -6,9 +6,9 @@ jobs:
     name: PBRP Build CI
     runs-on: ubuntu-20.04
     env:
-      OEM: samsung
-      DEVICE: jflte
-      BRANCH: pbrp-6.0
+      OEM: xiaomi
+      DEVICE: fog
+      BRANCH: twrp-12.1
     steps:
       - uses: actions/checkout@v2
       - name: Installing build dependencies
@@ -27,11 +27,10 @@ jobs:
           cd ~/PBRP
           mkdir ~/.bin
           curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
-          python3 ~/.bin/repo init --depth=1 -u https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-7.1
+          python3 ~/.bin/repo init --depth=1 -u https://github.com/PitchBlackRecoveryProject/manifest_pb.git -b android-12.1
           python3 ~/.bin/repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
-          git clone --depth=1 --branch ${{ env.BRANCH }} --single-branch https://github.com/unlegacy-devices/twrp_device_${{ env.OEM }}_${{ env.DEVICE }}.git device/${{ env.OEM }}/${{ env.DEVICE }}
-          git clone --depth=1 --branch twrp-jf --single-branch https://github.com/JDCTeam/android_kernel_samsung_jf.git kernel/samsung/jf
-          git clone --depth=1 --branch android-7.1.2_r38 --single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 /opt/toolchains/arm-eabi-4.8
+          git clone --depth=1 --branch ${{ env.BRANCH }} --single-branch https://github.com/infinixs5lite/device_xiaomi_fog-TWRP-PBRP -b twrp-12.1 /twrp_device_${{ env.OEM }}_${{ env.DEVICE }}.git device/${{ env.OEM }}/${{ env.DEVICE }}
+          git clone --depth=1 --branch lineage-20 --single-branch 1https://github.com/dblenk-project/kernel_xiaomi_fog_header /kernel/xiaomi/fog
       - name: Building PBRP
         run: |
           OLDPATH=$PATH
