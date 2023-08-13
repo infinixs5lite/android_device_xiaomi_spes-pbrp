@@ -123,6 +123,7 @@ TW_EXCLUDE_APEX := true
 TW_NO_FLASH_CURRENT_TWRP := false
 TW_INCLUDE_FLASH_CURRENT_TWRP := true
 TW_DEVICE_VERSION := Build By kelvinchinedu97@gmail.com
+TW_MTP_DEVICE := "Redmi 10C"
 
 # Vibrator
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
