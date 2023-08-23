@@ -72,7 +72,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
    export OF_FL_PATH2="/sys/class/leds/led:torch"
    
  # Use magisk 26.1 for the magisk addon
- export FOX_USE_SPECIFIC_MAGISK_ZIP="$PWD/device/xiaomi/spes/addon/Magisk-v26.1.zip"
+ export FOX_USE_SPECIFIC_MAGISK_ZIP="$(DEVICE_PATH)/addon/Magisk-v26.1.zip"
 
  # Security (Disables MTP&ADB during password prompt)
  export FOX_ADVANCED_SECURITY=1
