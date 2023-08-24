@@ -67,9 +67,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VANILLA_BUILD="1"
 
  # enable Flashlight
-    export OF_FLASHLIGHT_ENABLE="1"
-	export OF_FL_PATH1="/sys/class/leds/flashlight-back"
-   export OF_FL_PATH2="/sys/class/leds/led:torch"
+ export OF_FLASHLIGHT_ENABLE=1
+ export OF_FL_PATH1=/system/etc/flashlight
+ export OF_FL_PATH2=/sys/class/leds/flashlight-back
+ export OF_FL_PATH3=/sys/class/leds/led:torch
 
  # Use magisk 26.1 for the magisk addon
  export FOX_USE_SPECIFIC_MAGISK_ZIP="$PWD/device/xiaomi/spes/addon/Magisk-v26.1.zip"
@@ -89,16 +90,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
  # Maximum permissible splash image size (in kilobytes); do *NOT* increase!
  export OF_SPLASH_MAX_SIZE=130
 
- # CCACHE
+  # CCACHE
  export USE_CCACHE=1
  export CCACHE_EXEC=/usr/bin/ccache
+ export CCACHE_DIR="/mnt/ccache"
 
- CCACHE_DIR="/media/${USERNAME}/ccache"
-
- if [ -d ${CCACHE_DIR} ];
-  then
-   export CCACHE_DIR=${CCACHE_DIR}
-  else
+ # Warn if CCACHE_DIR is an invalid directory
+ if [ ! -d ${CCACHE_DIR} ];
+ then
    echo "CCACHE Directory/Partition is not mounted at \"${CCACHE_DIR}\""
    echo "Please edit the CCACHE_DIR build variable or mount the directory."
  fi
