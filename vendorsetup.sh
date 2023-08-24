@@ -75,7 +75,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_USE_SPECIFIC_MAGISK_ZIP="$(DEVICE_PATH)/addon/Magisk-v26.1.zip"
 
  # Security (Disables MTP&ADB during password prompt)
- export FOX_ADVANCED_SECURITY=1
+ export OF_ADVANCED_SECURITY=1
 
  # Screen settings
  export OF_SCREEN_H=2400
